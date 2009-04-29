@@ -3,8 +3,11 @@ Main features until beta phase:
 - New login controller that supports more than just LDAP.
 - Views refactoring and redesign
 - Admins should be able to do recrypt requests for non-private accounts
+- Copyright 2007-2009
 
 Additional features and wishes
 - Display time of last successful login if the password has changed
 - Hide Password somehow (c&p should still work)
 - Ability to generate passwords directly in cryptopus (with settings?)
+- New attribute for accounts: Link
+
