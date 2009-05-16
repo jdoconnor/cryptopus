@@ -33,12 +33,23 @@ h1. Requirements
 
 * LDAP as a user directory
 * Rails 2.3.2
+* SQLite or MySQL
 
 h1. Installation Notes
 
+h2. Simple with SQLite
+
 # download: @git clone git://github.com/puzzle/cryptopus.git@
 # @cd cryptopus@
-# @cp config/database.yml-dist config/database.yml@
+# @cp config/database.yml-dist-sqlite config/database.yml@
+# initialize database: @rake db:migrate@
+# start server: @scripts/server@
+
+h2. Powerful with MySQL 
+
+# download: @git clone git://github.com/puzzle/cryptopus.git@
+# @cd cryptopus@
+# @cp config/database.yml-dist-mysql config/database.yml@
 # edit file @database.yml@
 # set up database: @mysql> create database cryptopus_production;@
 # <code>mysql> grant all on cryptopus_production.* to 'cryptopus'@'localhost' identified by 'mypass'</code>
@@ -47,4 +58,9 @@ h1. Installation Notes
 
 h1. Contact Information
 
-Cryptopus was made by the guys at Puzzle ITC. Please go to "http://www.puzzle.ch/":http://www.puzzle.ch/ in order to get in touch with us.
+Cryptopus was made by the guys at Puzzle ITC. Please visit "http://www.puzzle.ch/":http://www.puzzle.ch/ in order to get in touch with us.
+
+You may also follow and contact us on Identi.ca or Twitter:
+
+* "http://identi.ca/puzzleitc":http://identi.ca/puzzleitc
+* "http://twitter.com/puzzleitc":http://twitter.com/puzzleitc
