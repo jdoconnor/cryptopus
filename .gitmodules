@@ -1,0 +1,3 @@
+[submodule "vendor/web-app-theme"]
+	path = vendor/web-app-theme
+	url = git://github.com/pilu/web-app-theme.git
