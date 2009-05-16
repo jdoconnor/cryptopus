@@ -36,9 +36,20 @@ h1. Requirements
 
 h1. Installation Notes
 
+h2. Simple with SQLite
+
 # download: @git clone git://github.com/puzzle/cryptopus.git@
 # @cd cryptopus@
-# @cp config/database.yml-dist config/database.yml@
+# @cp config/database.yml-dist-sqlite config/database.yml@
+# edit file @database.yml@
+# initialize database: @rake db:migrate@
+# start server: @scripts/server@
+
+h2. Powerful with MySQL 
+
+# download: @git clone git://github.com/puzzle/cryptopus.git@
+# @cd cryptopus@
+# @cp config/database.yml-dist-mysql config/database.yml@
 # edit file @database.yml@
 # set up database: @mysql> create database cryptopus_production;@
 # <code>mysql> grant all on cryptopus_production.* to 'cryptopus'@'localhost' identified by 'mypass'</code>
