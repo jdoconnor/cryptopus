@@ -14,25 +14,11 @@
   You should have received a copy of the GNU Affero General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -#
-#box
-  %h1 Cryptopus
-  .block
-    %h2 Login
-    .content.login
-      - form_tag({:action => 'authenticate'}, :class => "form login") do
-        .group
-          .left
-            = label_tag 'username', nil, :class => 'label right'
-          .right
-            = text_field_tag :username, params[:username], :class => 'text_field'
-          .clear
-        .group
-          .left
-            = label_tag 'password', nil, :class => 'label right'
-          .right
-            = password_field_tag 'password', nil, :class => 'text_field'
-          .clear
-        .group.navform
-          .right
-            = submit_tag 'Login', :class => 'button'
-          .clear
+.block
+  .secondary-navigation
+    = render :partial => 'tabs'
+    .clear
+  .content
+    %h2.title Create Team
+    .inner
+      = render :partial => 'form', :locals => { :submit_button_text => "Create" }

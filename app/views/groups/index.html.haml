@@ -1,0 +1,66 @@
+-#
+  Copyright (c) 2009 Puzzle ITC GmbH. All rights reserved.
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-#
+.block
+  .secondary-navigation
+    = render :partial => 'tabs'
+  .content
+    %h2
+      Groups for team
+      = @team.name
+    .inner
+      %table
+        %tr
+          %th.first
+          %th Group
+          %th Description
+          %th.last{:colspan => '2'} Actions
+
+        - for group in @groups
+          %tr{:class => cycle('odd', 'even')}
+            %td= link_to image_tag('folder_open.png') + group.name, team_group_accounts_path(@team, group)
+            %td= group.description
+            %td= link_to image_tag('edit.png'), [:edit, @team, group]
+            %td= link_to image_tag('remove.png'), [@team, group], :confirm => 'Are you sure?', :method => :delete
+
+    %h2 Members
+    .inner
+      %table
+        %tr
+          %th.first
+          %th Group
+          %th Description
+          %th.last{:colspan => '2'} Actions
+
+        - for teammember in @teammembers
+          %tr{:class => cycle('odd', 'even')}
+            %td= get_member_name(teammember)
+            %td
+              - if teammember.team_admin
+                = image_tag('folder_home.png')
+              - else
+                = link_to image_tag('delete_user.png'), [@team, teammember], :confirm => 'Are you sure?', :method => :delete
+  
+      = link_to image_tag("add_user.png") + 'Add member', new_team_teammember_path(@team)
+
+    %h2 Admins
+    .inner
+      %table
+        %tr
+          - for admin in @admins
+            %td{:class => cycle('odd', 'even')}
+            %td= get_member_name(admin)
+            %td= image_tag('penguin.png')

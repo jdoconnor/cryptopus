@@ -1,0 +1,41 @@
+-#
+  Copyright (c) 2009 Puzzle ITC GmbH. All rights reserved.
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-#
+.block
+  .secondary-navigation
+    = render :partial => 'tabs'
+  .content
+    %h2.title title?
+    .inner
+      %table.table
+        %tr
+          %th.first
+          %th Team
+          %th Description
+          %th.last{:colspan => '2'} Actions
+
+        - @teams.each do |team|
+          %tr{ :class => cycle('odd', 'even') }
+            %td= link_to image_tag('icons/group.png'), team_groups_path(team)
+            %td= link_to team.name, team_groups_path(team)
+            %td= team.description
+
+            - if team.teammembers.find_by_user_id(@user.id).team_admin
+              %td= link_to image_tag('edit.png'), edit_team_path(team)
+              %td= link_to image_tag('remove.png'), team, :confirm => 'Are you sure?', :method => :delete
+            - else
+              %td
+              %td

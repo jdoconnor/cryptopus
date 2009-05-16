@@ -19,7 +19,7 @@
 %html{ html_attrs('en-us') }
   %head
     %title Cryptopus
-    %meta{'http-equiv' => 'Content-Type', :content => 'text/html'}
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %link{:rel => 'shortcut icon', :href => '/favicon.png', :type => 'image/png'}
     = stylesheet_link_tag 'base'
     = stylesheet_link_tag 'themes/djime-cerulean/style.css'
@@ -36,8 +36,8 @@
             .clear
           #main-navigation
             %ul
-              %li.first= link_to 'Teams', teams_path
-              %li= link_to 'Search', new_search_path
+              %li.first.active= link_to 'Teams', teams_path
+              %li= link_to 'Search', '/search'
             .clear
         #wrapper
           #main
@@ -50,7 +50,7 @@
             = yield
             #footer
               .block
-                %p Cryptopus bla bla bla
+                %p Der blaue Blaken hier ist einfach so für schön und das Auge ist mit. Yes we can!
           #sidebar
             = render :partial => 'layouts/sidebar'
           .clear
