@@ -17,25 +17,17 @@
 .block
   .secondary-navigation
     = render :partial => 'tabs'
+    .clear
   .content
-    %h2.title title?
-    .inner
-      %table.table
-        %tr
-          %th.first
-          %th Team
-          %th Description
-          %th.last{:colspan => '2'} Actions
+    %h2 Search results
 
-        - @teams.each do |team|
-          %tr{ :class => cycle('odd', 'even') }
-            %td= link_to image_tag('icons/group_go.png'), team_groups_path(team)
-            %td= link_to team.name, team_groups_path(team)
-            %td= team.description
+%table
+  - for account in @accounts do
+    - group = account.group
+    - team = group.team
 
-            - if team.teammembers.find_by_user_id(@user.id).team_admin
-              %td= link_to image_tag('icons/group_edit.png'), edit_team_path(team)
-              %td= link_to image_tag('icons/group_delete.png'), team, :confirm => 'Are you sure?', :method => :delete
-            - else
-              %td
-              %td
+    %tr{ :class => cycle('odd', 'even') }
+      %td= link_to image_tag( "encrypted_small.png" ) + " " + account.accountname, [team, group, account]
+      %td= account.description
+      %td= link_to image_tag("edit.png"), [:edit, team, group, account]
+      %td= link_to image_tag("remove.png"), [team, group, account], :confirm => 'Are you sure?', :method => :delete
