@@ -39,7 +39,7 @@ test:
 
 production:
   <<: *generic
-  adapter: mysql
+  adapter: mysql2
   database: <%= ENV['OPENSHIFT_APP_NAME'] %>
   host: <%= ENV['OPENSHIFT_MYSQL_DB_HOST'] %>
   port: <%= ENV['OPENSHIFT_MYSQL_DB_PORT'] %>
