@@ -51,14 +51,14 @@ ActiveRecord::Schema.define(:version => 13) do
   end
 
   create_table "recryptrequests", :force => true do |t|
-    t.integer "user_id",       :default => 0,    :null => false
-    t.boolean "adminrequired", :default => true, :null => false
-    t.boolean "rootrequired",  :default => true, :null => false
+    t.integer "user_id",       :default => 0,     :null => false
+    t.boolean "adminrequired", :default => false, :null => false
+    t.boolean "rootrequired",  :default => false, :null => false
   end
 
   create_table "teammembers", :force => true do |t|
     t.integer  "team_id",    :default => 0,     :null => false
-    t.binary   "password",   :default => "",    :null => false
+    t.binary   "password",   :default => "\\x", :null => false
     t.integer  "user_id",    :default => 0,     :null => false
     t.datetime "created_on",                    :null => false
     t.datetime "updated_on",                    :null => false

@@ -1,10 +1,10 @@
 class ExtendRecryptrequests < ActiveRecord::Migration
 
   def self.up
-    add_column "recryptrequests", "adminrequired", :boolean, :default => 1, :null => false
-    add_column "recryptrequests", "rootrequired", :boolean, :default => 1, :null => false
+    add_column "recryptrequests", "adminrequired", :boolean, :default => false, :null => false
+    add_column "recryptrequests", "rootrequired", :boolean, :default => false, :null => false
 
-    add_column "teammembers", "locked", :boolean, :default => 0, :null => false
+    add_column "teammembers", "locked", :boolean, :default => false, :null => false
   end
 
   def self.down
